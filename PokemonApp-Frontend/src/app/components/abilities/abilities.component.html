@@ -1,0 +1,7 @@
+<div *ngFor="let ability of abilitiesList">
+    <div>
+        {{ ability.name }}
+        <button [routerLink]="['/ability', ability.name]">See details</button>
+    </div>
+
+</div>

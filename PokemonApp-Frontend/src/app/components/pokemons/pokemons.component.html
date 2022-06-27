@@ -1,0 +1,8 @@
+<div *ngFor="let pokemon of pokemonsList">
+    <div>
+        {{pokemon.name}} 
+        <button [routerLink]="['/pokemon', pokemon.name]">See details</button>
+    </div>
+</div>
+
+
