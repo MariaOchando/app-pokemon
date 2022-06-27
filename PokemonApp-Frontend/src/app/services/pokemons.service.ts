@@ -23,18 +23,26 @@ export class PokemonsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get<any>(`${this.url}?_limit=10`)
+    return this.http.get<any>(`${this.url}`)
    
     
     //  .then(result => result.data.results)
   }
 
-  getByName(name:string) {
-    return axios.get(`${this.url}/${name}`)
-    .then(result => result.data)
-    .then(data => { 
-      data.abilities.forEach((ability: { name: any }) => console.log(ability.name));
-    })
+  getByName(name:string) : Observable<any> {
+    
+     return this.http.get(`${this.url}/${name}`)
+     .pipe(map (res => {
+        let result = res;
+        return console.log(result);
+     }))
+      
+
+    // return axios.get(`${this.url}/${name}`)
+    // .then(result => result.data)
+    // .then(data => { 
+    //   data.abilities.forEach((ability: { name: any }) => console.log(ability.name));
+    // })
   }
 
   
