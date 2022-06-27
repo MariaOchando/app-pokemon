@@ -18,7 +18,10 @@ export class PokemonsComponent implements OnInit {
       .subscribe(response => {
         this.pokemonsList = response.results;
         console.log(response);
-      });
+      }
+      
+      )
+      
     }
   }
 

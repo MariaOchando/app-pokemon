@@ -9,7 +9,18 @@ export interface Pokemon {
   height: number,
   weight: number,
   id: number,
-
+  abilities: [
+    PokemonAbilities,
+    PokemonAbilities,
+  ]
+}
+interface PokemonAbilities {
+  ability: {
+   name: string;
+  }
+}
+interface PokemonAbilityName {
+  name: string;
 }
 
 @Injectable({
@@ -23,27 +34,25 @@ export class PokemonsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get<any>(`${this.url}`)
+    return this.http.get<any>(`${this.url}?_limit=10`)
    
     
     //  .then(result => result.data.results)
   }
 
-  getByName(name:string) : Observable<any> {
-    
-     return this.http.get(`${this.url}/${name}`)
-     .pipe(map (res => {
-        let result = res;
-        return console.log(result);
-     }))
-      
-
-    // return axios.get(`${this.url}/${name}`)
-    // .then(result => result.data)
-    // .then(data => { 
-    //   data.abilities.forEach((ability: { name: any }) => console.log(ability.name));
-    // })
-  }
+      getByName(name:String) {
+        return this.http.get(`${this.url}/${name}`)
+        .pipe(res => {
+          return res;
+        })
+      }
+  // getByName(name:string) {
+  //   return axios.get(`${this.url}/${name}`)
+  //   .then(result => result.data)
+  //   .then(data => { 
+  //     data.abilities.forEach((ability: { name: any }) => console.log(ability.name));
+  //   })
+  // }
 
   
 }

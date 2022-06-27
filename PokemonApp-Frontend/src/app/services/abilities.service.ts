@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 export interface Ability {
   name: string,
   id: number,
-  pokemons: string[],
+  effect_entries: [
+    effect, 
+    effect
+   ]
 }
-
+interface effect  {
+  short_effect: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -21,8 +27,11 @@ export class  AbilitiesService {
     return this.http.get<any>(`${this.url}`)
   }
 
-  getByName(name:string): Observable<any> {
+  getByName(name:String): Observable<any> {
     return this.http.get<any>(`${this.url}/${name}`)
+    .pipe(res => {
+      return res;
+    });
     
     
     

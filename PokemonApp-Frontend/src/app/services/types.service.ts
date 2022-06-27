@@ -5,7 +5,9 @@ import { HttpClient } from '@angular/common/http';
 export interface Type {
   name: string,
   id: number,
-  generation: string,
+  move_damage_class: {
+    name: string,
+  },
 }
 
 @Injectable({
@@ -21,11 +23,17 @@ export class TypesService {
     return this.http.get<any>(`${this.url}`)
   }
 
+  getById(name:String): Observable<any> {
+    return this.http.get<any>(`${this.url}/${name}`)
+    .pipe(res => {
+      return res;
+    });
+
   // getByName(name:string) {
   //   return axios.get(`${this.url}/${name}`)
   //   .then (result => result.data);
     
   // }
 
-  
+  }
 }
