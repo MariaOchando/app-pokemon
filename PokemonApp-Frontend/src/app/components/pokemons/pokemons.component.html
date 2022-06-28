@@ -1,8 +1,11 @@
-<div *ngFor="let pokemon of pokemonsList">
+<div *ngFor="let pokemon of pokemonsList | paginate: { itemsPerPage: 10, currentPage: p }">
+    
     <div>
         {{pokemon.name}} 
         <button [routerLink]="['/pokemon', pokemon.name]">See details</button>
     </div>
+    
 </div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 

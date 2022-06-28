@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TypesService } from 'src/app/services/types.service';
 import { ActivatedRoute } from '@angular/router';
-import { Type } from 'src/app/services/types.service';
+import { Type } from 'src/app/models/models';
 @Component({
   selector: 'app-types-details',
   templateUrl: './types-details.component.html',
@@ -9,13 +9,16 @@ import { Type } from 'src/app/services/types.service';
 })
 export class TypesDetailsComponent implements OnInit {
 
+  //specify info we want
   type: Type = {
     name: "",
   id: 0,
   move_damage_class: {
     name: ""
   },
-
+  generation: {
+    name: "",
+  }
   }
 
   constructor(

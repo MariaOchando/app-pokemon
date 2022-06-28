@@ -10,7 +10,8 @@ import { TypesComponent } from './components/types/types.component';
 import { PokemonsDetailsComponent } from './components/pokemons/pokemons-details.component';
 import { AbilitiesDetailsComponent } from './components/abilities/abilities-details.component';
 import { TypesDetailsComponent } from './components/types/types-details.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchFilterPipe } from './services/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TypesDetailsComponent } from './components/types/types-details.componen
     PokemonsDetailsComponent,
     AbilitiesDetailsComponent,
     TypesDetailsComponent,
+    SearchFilterPipe,
     
   ],
   imports: [
@@ -28,6 +30,7 @@ import { TypesDetailsComponent } from './components/types/types-details.componen
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

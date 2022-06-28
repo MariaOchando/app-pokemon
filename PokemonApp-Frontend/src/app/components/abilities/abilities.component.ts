@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbilitiesService } from 'src/app/services/abilities.service';
-import { Ability } from 'src/app/services/abilities.service';
+import { Ability } from 'src/app/models/models';
 
 
 @Component({
@@ -11,6 +11,8 @@ import { Ability } from 'src/app/services/abilities.service';
 export class AbilitiesComponent implements OnInit {
 
   abilitiesList:Ability[] = [];
+  p: number = 1;
+  collection: Ability[] = this.abilitiesList; 
 
   constructor(private abilitiesService: AbilitiesService) { }
 

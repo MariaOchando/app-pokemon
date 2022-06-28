@@ -1,30 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
-export interface Type {
-  name: string,
-  id: number,
-  move_damage_class: {
-    name: string,
-  },
-}
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class TypesService {
 
-  private url:string = "https://pokeapi.co/api/v2/type";
-
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get<any>(`${this.url}`)
+    return this.http.get<any>(`${environment.typesURL}/?limit=100000&offset=0`)
   }
 
   getById(name:String): Observable<any> {
-    return this.http.get<any>(`${this.url}/${name}`)
+    return this.http.get<any>(`${environment.typesURL}/${name}`)
     .pipe(res => {
       return res;
     });

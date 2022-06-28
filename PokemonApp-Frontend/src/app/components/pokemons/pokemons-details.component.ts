@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { ActivatedRoute } from '@angular/router';
-import { Pokemon } from 'src/app/services/pokemons.service';
+import { Pokemon } from 'src/app/models/models';
 
 
 @Component({
@@ -11,6 +11,7 @@ import { Pokemon } from 'src/app/services/pokemons.service';
 })
 export class PokemonsDetailsComponent implements OnInit {
 
+    //specify info we want
   pokemon: Pokemon = {
     name: "",
     height: 0,
@@ -20,10 +21,9 @@ export class PokemonsDetailsComponent implements OnInit {
       ability: {
         name: "",
       },
-    
     } ,
-  {  ability: {
-    name: "",
+    { ability: {
+        name: "",
   },
 }],}
 

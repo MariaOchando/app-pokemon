@@ -2,33 +2,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
-export interface Ability {
-  name: string,
-  id: number,
-  effect_entries: [
-    effect, 
-    effect
-   ]
-}
-interface effect  {
-  short_effect: string;
-}
+
 @Injectable({
   providedIn: 'root'
 })
 export class  AbilitiesService {
-
-  private url:string = "https://pokeapi.co/api/v2/ability";
-
+ 
   constructor(private http:HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get<any>(`${this.url}`)
+    return this.http.get<any>(`${environment.abilitiesURL}/?limit=100000&offset=0`)
   }
 
   getByName(name:String): Observable<any> {
-    return this.http.get<any>(`${this.url}/${name}`)
+    return this.http.get<any>(`${environment.abilitiesURL}/${name}`)
     .pipe(res => {
       return res;
     });

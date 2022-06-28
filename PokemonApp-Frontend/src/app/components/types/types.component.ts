@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TypesService } from 'src/app/services/types.service';
-import { Type } from 'src/app/services/types.service';
+import { Type } from 'src/app/models/models';
 
 @Component({
   selector: 'app-types',
@@ -9,7 +9,9 @@ import { Type } from 'src/app/services/types.service';
 })
 export class TypesComponent implements OnInit {
 
-   typesList : Type[] = [];
+  typesList : Type[] = [];
+  p: number = 1;
+  collection: Type[] = this.typesList; 
 
    constructor(private typesService: TypesService) { }
 

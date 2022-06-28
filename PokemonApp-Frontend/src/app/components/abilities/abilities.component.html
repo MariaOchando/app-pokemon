@@ -1,7 +1,8 @@
-<div *ngFor="let ability of abilitiesList">
+<div *ngFor="let ability of abilitiesList | paginate: { itemsPerPage: 10, currentPage: p }">
     <div>
         {{ ability.name }}
         <button [routerLink]="['/ability', ability.name]">See details</button>
     </div>
 
 </div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
