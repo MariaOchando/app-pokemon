@@ -14,6 +14,11 @@ export interface Ability {
     short_effect: string;
   }
 
+ 
+  
+
+
+
 //Pokemons Model
 export interface Pokemon {
     name: string,
@@ -31,6 +36,7 @@ export interface Pokemon {
     }
   }
 
+  
 //Types Model
 export interface Type {
     name: string,

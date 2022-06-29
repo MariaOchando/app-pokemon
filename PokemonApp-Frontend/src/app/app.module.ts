@@ -12,6 +12,7 @@ import { AbilitiesDetailsComponent } from './components/abilities/abilities-deta
 import { TypesDetailsComponent } from './components/types/types-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
+import { SearchFilterComponent } from './components/searchFilter/searchFilter.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     PokemonsDetailsComponent,
     AbilitiesDetailsComponent,
     TypesDetailsComponent,
-    
+    SearchFilterComponent,
     
   ],
   imports: [

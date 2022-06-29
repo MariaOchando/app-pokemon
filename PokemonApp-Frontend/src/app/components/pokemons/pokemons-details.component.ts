@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from 'src/app/models/models';
-
-
 @Component({
   selector: 'app-pokemons-details',
   templateUrl: './pokemons-details.component.html',

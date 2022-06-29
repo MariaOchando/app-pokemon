@@ -20,7 +20,7 @@ export class PokemonsComponent implements OnInit {
       this.pokemonsService.getAll()
       .subscribe(response => {
         this.pokemonsList = response.results;
-        console.log(response.results);
+        console.log(this.pokemonsList);
       }
       
       )

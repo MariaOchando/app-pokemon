@@ -6,6 +6,7 @@ import {  AbilitiesComponent } from './components/abilities/abilities.component'
 import { PokemonsDetailsComponent } from './components/pokemons/pokemons-details.component';
 import { AbilitiesDetailsComponent } from './components/abilities/abilities-details.component';
 import { TypesDetailsComponent } from './components/types/types-details.component';
+import { SearchFilterComponent } from './components/searchFilter/searchFilter.component';
 
 const routes: Routes = [
   //{path: " ", component: HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: "pokemon/:pokemon", component: PokemonsDetailsComponent},
   {path: "ability/:ability", component:AbilitiesDetailsComponent},
   {path: "type/:type", component: TypesDetailsComponent},
+  {path: "search", component: SearchFilterComponent}
 ];
 
 @NgModule({
