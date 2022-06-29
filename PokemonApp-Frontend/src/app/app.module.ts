@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import {RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
@@ -11,7 +11,7 @@ import { PokemonsDetailsComponent } from './components/pokemons/pokemons-details
 import { AbilitiesDetailsComponent } from './components/abilities/abilities-details.component';
 import { TypesDetailsComponent } from './components/types/types-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SearchFilterPipe } from './services/search-filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { SearchFilterPipe } from './services/search-filter.pipe';
     PokemonsDetailsComponent,
     AbilitiesDetailsComponent,
     TypesDetailsComponent,
-    SearchFilterPipe,
+    
     
   ],
   imports: [
@@ -31,6 +31,7 @@ import { SearchFilterPipe } from './services/search-filter.pipe';
     HttpClientModule,
     RouterModule,
     NgxPaginationModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
