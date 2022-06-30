@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { getServerErrorMessage } from './handle-errors.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +15,30 @@ export class PokemonsService {
 
   getAll(): Observable<any> {
     return this.http.get<any>(`${environment.pokemonsURL}/?limit=100000&offset=0`)
+    .pipe(catchError(error => {
+      let errorMsg: string;
+      if (error.error instanceof ErrorEvent) {
+        errorMsg = `Error : ${ error.error.message }`;
+   } else {
+      errorMsg = getServerErrorMessage(error);
+   }
+   return throwError(() => error);
+  }))
   }
   getByName(name:String) {
     return this.http.get(`${environment.pokemonsURL}/${name}`)
-      .pipe(res => {
+    .pipe(catchError(error => {
+      let errorMsg: string;
+      if (error.error instanceof ErrorEvent) {
+        errorMsg = `Error : ${ error.error.message }`;
+   } else {
+      errorMsg = getServerErrorMessage(error);
+   }
+   return throwError(() => error);
+  }))
+    .pipe(res => {
           return res;
         })
       }
-  // getByName(name:string) {
-  //   return axios.get(`${this.url}/${name}`)
-  //   .then(result => result.data)
-  //   .then(data => { 
-  //     data.abilities.forEach((ability: { name: any }) => console.log(ability.name));
-  //   })
-  // }
-
   
 }

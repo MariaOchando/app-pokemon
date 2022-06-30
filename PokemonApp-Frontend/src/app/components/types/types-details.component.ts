@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TypesService } from 'src/app/services/types.service';
 import { ActivatedRoute } from '@angular/router';
 import { Type } from 'src/app/models/models';
+import { catchError, of } from 'rxjs';
 @Component({
   selector: 'app-types-details',
   templateUrl: './types-details.component.html',
@@ -20,6 +21,7 @@ export class TypesDetailsComponent implements OnInit {
     name: "",
   }
   }
+  errorMsg: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +32,11 @@ export class TypesDetailsComponent implements OnInit {
   loadType(): void {
     const typeId = this.route.snapshot.paramMap.get('type');
      this.typesService.getById(String(typeId))
-    .subscribe ((result => {
+     .pipe(catchError(error => {
+      this.errorMsg = error.message;
+      return of([]);
+    }))
+     .subscribe ((result => {
       this.type = result
        console.log(result);
      }));

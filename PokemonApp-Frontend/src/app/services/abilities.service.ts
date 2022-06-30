@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { getServerErrorMessage } from './handle-errors.service';
 
 
 @Injectable({
@@ -14,24 +14,31 @@ export class  AbilitiesService {
 
   getAll(): Observable<any> {
     return this.http.get<any>(`${environment.abilitiesURL}/?limit=100000&offset=0`)
+    .pipe(catchError(error => {
+      let errorMsg: string;
+      if (error.error instanceof ErrorEvent) {
+        errorMsg = `Error : ${ error.error.message }`;
+   } else {
+      errorMsg = getServerErrorMessage(error);
+   }
+   return throwError(() => error);
+  }))
   }
+
 
   getByName(name:String): Observable<any> {
     return this.http.get<any>(`${environment.abilitiesURL}/${name}`)
+    .pipe(catchError(error => {
+      let errorMsg: string;
+      if (error.error instanceof ErrorEvent) {
+        errorMsg = `Error : ${ error.error.message }`;
+   } else {
+      errorMsg = getServerErrorMessage(error);
+   }
+   return throwError(() => error);
+  }))
     .pipe(res => {
       return res;
     });
-    
-    
-    
-  // getByName(name:string) {
-  //   return axios.get(`${this.url}/${name}`)
-  //   .then(result => result.data)
-  //   .then(data => {
-  //     data.effect_entries.forEach()
-  //   })
-  // }
-
- 
 }
 }

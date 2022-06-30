@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
-import {getServerErrorMessage} from 'src/app/services/handle-errors.service;
+import {getServerErrorMessage} from 'src/app/services/handle-errors.service';
 
 
 @Injectable({
@@ -13,8 +13,6 @@ export class SearchFilterService {
 
   constructor( private http: HttpClient) { }
 
-  
-
   getAllPokemons(): Observable<any> {
      return this.http.get(`${environment.pokemonsURL}/?limit=100000&offset=0`)
      .pipe(catchError(error => {
@@ -22,7 +20,7 @@ export class SearchFilterService {
         if (error.error instanceof ErrorEvent) {
           errorMsg = `Error : ${ error.error.message }`;
      } else {
-        errorMsg = this.getServerErrorMessage(error);
+        errorMsg = getServerErrorMessage(error);
      }
      return throwError(() => error);
     }))
@@ -35,20 +33,20 @@ export class SearchFilterService {
         if (error.error instanceof ErrorEvent) {
           errorMsg = `Error : ${ error.error.message }`;
      } else {
-        errorMsg = this.getServerErrorMessage(error);
+        errorMsg = getServerErrorMessage(error);
      }
      return throwError(() => error);
     }))
   }
   
   getAllTypes(): Observable<any> {
-    return this.http.get<any>(`${environment.typesURL}/?limit=100000&offset=0`)
+    return this.http.get<any>(`${environment.typesURL}/?limit=100000&offset=0/`)
     .pipe(catchError(error => {
       let errorMsg: string;
       if (error.error instanceof ErrorEvent) {
         errorMsg = `Error : ${ error.error.message }`;
    } else {
-      errorMsg = this.getServerErrorMessage(error);
+      errorMsg = getServerErrorMessage(error);
    }
    return throwError(() => error);
   }))

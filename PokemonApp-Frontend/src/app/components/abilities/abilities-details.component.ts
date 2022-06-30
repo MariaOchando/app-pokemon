@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbilitiesService } from 'src/app/services/abilities.service';
 import { ActivatedRoute } from '@angular/router';
 import { Ability } from 'src/app/models/models';
+import { catchError, of } from 'rxjs';
 @Component({
   selector: 'app-abilities-details',
   templateUrl: './abilities-details.component.html',
@@ -22,6 +23,7 @@ export class AbilitiesDetailsComponent implements OnInit {
     name: "",
    }
   }
+  errorMsg: string | undefined;
 
   constructor(
     private abilitiesService: AbilitiesService,
@@ -32,6 +34,10 @@ export class AbilitiesDetailsComponent implements OnInit {
   loadAbility(): void {
    const abilityName = this.route.snapshot.paramMap.get('ability');
     this.abilitiesService.getByName(String(abilityName))
+    .pipe(catchError(error => {
+      this.errorMsg = error.message;
+      return of([]);
+    }))
     .subscribe((result) => {
       this.ability = result
       console.log(this.ability);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from 'src/app/models/models';
+import { catchError, of } from 'rxjs';
 @Component({
   selector: 'app-pokemons-details',
   templateUrl: './pokemons-details.component.html',
@@ -24,6 +25,7 @@ export class PokemonsDetailsComponent implements OnInit {
         name: "",
   },
 }],}
+errorMsg: string | undefined;
 
   constructor( 
     private pokemonsService:PokemonsService,
@@ -35,6 +37,10 @@ export class PokemonsDetailsComponent implements OnInit {
       loadPokemon() : void {
       const pokemonName = this.route.snapshot.paramMap.get('pokemon');
       this.pokemonsService.getByName(String(pokemonName))
+      .pipe(catchError(error => {
+        this.errorMsg = error.message;
+        return of([]);
+      }))
       .subscribe((result: any) => {
         this.pokemon = result;
       console.log(result);

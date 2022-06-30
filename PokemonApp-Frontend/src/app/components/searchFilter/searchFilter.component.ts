@@ -4,7 +4,7 @@ import { Pokemon } from 'src/app/models/models';
 import { Ability } from 'src/app/models/models';
 import { Type } from 'src/app/models/models';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-searchFilter',
@@ -17,6 +17,7 @@ export class SearchFilterComponent implements OnInit {
   abilityArray = [];
   typeArray= [];
   searchText= "";
+  errorMsg: string | undefined;
 
   constructor(private searchfilterService: SearchFilterService, private router: Router  ) { 
     this.filterPokemon();
@@ -33,7 +34,7 @@ export class SearchFilterComponent implements OnInit {
       .filter((pokemon: Pokemon) =>
        pokemon.name === this.searchText) ;
         console.log(`pokemon${this.pokemonArray}`);
-        if (this.abilityArray.length === 0 && this.typeArray.length) {
+        if (this.abilityArray.length === 0 && this.typeArray.length === 0 && this.pokemonArray.length > 0) {
             this.router.navigate([`./pokemon/${this.searchText}`])
            }
     })
@@ -41,7 +42,7 @@ export class SearchFilterComponent implements OnInit {
 
     async filterAbility() {
      await this.searchfilterService.getAllAbilities()
-    .subscribe(response => {
+     .subscribe(response => {
       this.abilityArray = response.results
       .filter((ability: Ability) =>
       ability.name === this.searchText) ;
@@ -54,7 +55,7 @@ export class SearchFilterComponent implements OnInit {
 
     async filterType() {
      await this.searchfilterService.getAllTypes()
-    .subscribe(response => {
+     .subscribe(response => {
       this.typeArray= response.results
       .filter((type: Type) => type.name === this.searchText);
       console.log(`type ${this.typeArray}`);

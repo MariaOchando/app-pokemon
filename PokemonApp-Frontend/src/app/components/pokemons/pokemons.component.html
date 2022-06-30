@@ -1,3 +1,4 @@
+<div class="container">
 <div *ngFor="let pokemon of pokemonsList | paginate: { itemsPerPage: 10, currentPage: p }">
     
     <div>
@@ -6,6 +7,6 @@
     </div>
     
 </div>
+</div>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
 
