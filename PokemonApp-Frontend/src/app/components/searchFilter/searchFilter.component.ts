@@ -5,6 +5,7 @@ import { Ability } from 'src/app/models/models';
 import { Type } from 'src/app/models/models';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-searchFilter',
   templateUrl: './searchFilter.component.html',
@@ -21,66 +22,61 @@ export class SearchFilterComponent implements OnInit {
     this.filterPokemon();
     this.filterAbility();
     this.filterAll();
+    this.filterType();
+    
   }
-  filterPokemon(): void {
-    this.searchfilterService.getAllPokemons()
+
+  async filterPokemon() {
+    await this.searchfilterService.getAllPokemons()
     .subscribe(response => {
       this.pokemonArray  = response.results
       .filter((pokemon: Pokemon) =>
        pokemon.name === this.searchText) ;
-        console.log(`pokemon${this.pokemonArray}`)
+        console.log(`pokemon${this.pokemonArray}`);
+        if (this.abilityArray.length === 0 && this.typeArray.length) {
+            this.router.navigate([`./pokemon/${this.searchText}`])
+           }
     })
     }
 
-  filterAbility(): void {
-    this.searchfilterService.getAllAbilities()
+    async filterAbility() {
+     await this.searchfilterService.getAllAbilities()
     .subscribe(response => {
       this.abilityArray = response.results
       .filter((ability: Ability) =>
       ability.name === this.searchText) ;
-      console.log(`ability${this.abilityArray}`)
+      console.log(`ability${this.abilityArray}`);
+      if (this.pokemonArray.length === 0 && this.typeArray.length === 0 && this.abilityArray.length > 0) {
+            this.router.navigate([`./ability/${this.searchText}`])
+          }
     })
   }
 
-  filterType(): void {
-    this.searchfilterService.getAllTypes()
+    async filterType() {
+     await this.searchfilterService.getAllTypes()
     .subscribe(response => {
       this.typeArray= response.results
       .filter((type: Type) => type.name === this.searchText);
-      console.log(`type ${this.typeArray}`)
+      console.log(`type ${this.typeArray}`);
+      if (this.abilityArray.length === 0 && this.pokemonArray.length === 0 && this.typeArray.length > 0) {
+            this.router.navigate([`./type/${this.searchText}`])
+         }
     })
   }
-  redirectFunction(): void {
-    
-    if (this.abilityArray.length === 0 && this.typeArray.length === 0 && this.pokemonArray.length > 0) {
-      this.router.navigate([`./pokemon/${this.searchText}`])
-  }
-    else if (this.pokemonArray.length === 0 && this.typeArray.length === 0 && this.abilityArray.length > 0) {
-      this.router.navigate([`./ability/${this.searchText}`])
-    }
-    else if (this.abilityArray.length === 0 && this.pokemonArray.length === 0 && this.typeArray.length > 0) {
-      this.router.navigate([`./type/${this.searchText}`])
-    }
-    // else {
-    //   alert("Write a valid pokemon, type or ability")
-    // }
-    
-      
-    
-}
+
+//    
 
   filterAll(): void {
     this.filterAbility();
     this.filterPokemon();
     this.filterType();
-    this.redirectFunction();
-  }
+   
+   }
 
 
     
-  
+
 
   ngOnInit(): void {
   }
 }
-
