@@ -13,6 +13,7 @@ import { TypesDetailsComponent } from './components/types/types-details.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterComponent } from './components/searchFilter/searchFilter.component';
+import { LatestPokemonsComponent } from './components/Landing-Page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SearchFilterComponent } from './components/searchFilter/searchFilter.co
     AbilitiesDetailsComponent,
     TypesDetailsComponent,
     SearchFilterComponent,
+    LatestPokemonsComponent,
     
   ],
   imports: [

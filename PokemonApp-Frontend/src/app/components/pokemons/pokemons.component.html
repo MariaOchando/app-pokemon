@@ -1,12 +1,14 @@
 <div class="container">
-<div *ngFor="let pokemon of pokemonsList | paginate: { itemsPerPage: 10, currentPage: p }">
-    
-    <div>
-        {{pokemon.name}} 
-        <button [routerLink]="['/pokemon', pokemon.name]">See details</button>
+    <div *ngFor="let pokemon of pokemonsList | paginate: { itemsPerPage: 10, currentPage: p }">
+        <div class="row">
+            <div class="col-6">
+                <p>{{pokemon.name}} </p>
+            </div>
+            <div class="col-6">
+                <button [routerLink]="['/pokemon', pokemon.name]">See details</button>
+            </div>
+        </div>
     </div>
-    
-</div>
 </div>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>
 

@@ -9,23 +9,30 @@
 </head>
 <body>
   <header>
-    <div class="container h1">
-      <h1>Pokemon App</h1>
-    </div>
-   
     <div class="container">
-      <nav>
-        <button routerLink="">Home</button>
-        <button routerLink="/pokemons">Pokemons</button>
-        <button routerLink="/types">Types</button>
-        <button routerLink="/abilities">Abilities</button>
-      
-    </nav>
+      <div class="row">
+        <div class="col-12">
+          <h1>Pokemon App</h1>
+        </div>
+        <div class="row">
+        <div class="col-6">
+          <app-searchFilter></app-searchFilter>
+        </div>
+        <div class="col-6">
+          <nav>
+            <button routerLink="">Home</button>
+            <button routerLink="/pokemons">Pokemons</button>
+            <button routerLink="/types">Types</button>
+            <button routerLink="/abilities">Abilities</button>
+        </nav>
+        </div>
+      </div>
+      </div>
     </div>
-   
+    
   </header>
   <main>
-    <app-searchFilter></app-searchFilter>
+   
   </main>
   
 

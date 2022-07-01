@@ -16,20 +16,24 @@ export class PokemonsComponent implements OnInit {
   collection: Pokemon[] = this.pokemonsList; 
   errorMsg: string | undefined;
 
-  constructor(private pokemonsService: PokemonsService) { }
+
+  constructor(private pokemonsService: PokemonsService) {
+    this.getAll();
+   }
+    getAll(): void {
+     this.pokemonsService.getAll()
+    .pipe(catchError(error => {
+      this.errorMsg = error.message;
+      return of([]);
+   }))
+   .subscribe(response => {
+     this.pokemonsList = response.results;
+     console.log(this.pokemonsList);
+   }  
+   )
+  }
 
   ngOnInit(): void {
-      this.pokemonsService.getAll()
-      .pipe(catchError(error => {
-        this.errorMsg = error.message;
-        return of([]);
-      }))
-      .subscribe(response => {
-        this.pokemonsList = response.results;
-        console.log(this.pokemonsList);
-      }
-      
-      )
       
     }
   }

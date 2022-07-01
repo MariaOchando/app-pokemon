@@ -11,11 +11,17 @@ import { catchError, of } from 'rxjs';
 export class PokemonsDetailsComponent implements OnInit {
 
     //specify info we want
+  
+    
   pokemon: Pokemon = {
     name: "",
     height: 0,
     weight: 0,
     id: 0,
+    sprites: {
+      front_default: "",
+      back_default: "",
+    },
     abilities: [{
       ability: {
         name: "",
@@ -24,7 +30,14 @@ export class PokemonsDetailsComponent implements OnInit {
     { ability: {
         name: "",
   },
-}],}
+    }],
+    types: [{
+      type: {
+        name: ""
+      }
+    }]
+    
+    }
 errorMsg: string | undefined;
 
   constructor( 
@@ -46,6 +59,7 @@ errorMsg: string | undefined;
       console.log(result);
     })
    }
+
 
   ngOnInit(): void {
  

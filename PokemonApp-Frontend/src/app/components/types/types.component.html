@@ -1,10 +1,15 @@
-<div class="container">
-<div *ngFor="let type of typesList | paginate: { itemsPerPage: 10, currentPage: p }">
-    <div>
-        {{type.name}}
-        <button [routerLink]="['/type', type.name]">See details</button>
+<div class="container"> 
+    <div *ngFor="let type of typesList | paginate: { itemsPerPage: 10, currentPage: p }">
+        <div class="row">
+            <div class="col-6 ">
+                <p>{{type.name}}</p>
+            </div>
+            <div class="col-6 ">
+                <button [routerLink]="['/type', type.name]">See details</button>
+            </div>
+        </div>
     </div>
+</div>
+   
 
-</div>
-</div>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>

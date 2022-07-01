@@ -7,6 +7,7 @@ import { PokemonsDetailsComponent } from './components/pokemons/pokemons-details
 import { AbilitiesDetailsComponent } from './components/abilities/abilities-details.component';
 import { TypesDetailsComponent } from './components/types/types-details.component';
 import { SearchFilterComponent } from './components/searchFilter/searchFilter.component';
+import { LatestPokemonsComponent } from './components/Landing-Page/landing-page.component';
 
 const routes: Routes = [
   //{path: " ", component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "pokemon/:pokemon", component: PokemonsDetailsComponent},
   {path: "ability/:ability", component:AbilitiesDetailsComponent},
   {path: "type/:type", component: TypesDetailsComponent},
+  {path: "", component: LatestPokemonsComponent}
   
 ];
 

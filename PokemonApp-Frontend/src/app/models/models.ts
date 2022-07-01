@@ -16,7 +16,12 @@ export interface Ability {
 
  
   
-
+export interface TypePokemon {
+    
+   
+  
+  
+}
 
 
 //Pokemons Model
@@ -25,14 +30,28 @@ export interface Pokemon {
     height: number,
     weight: number,
     id: number,
+    sprites: {
+      front_default: string,
+      back_default: string,
+    }
     abilities: [
       PokemonAbilities,
       PokemonAbilities,
+    ],
+    types: [
+      PokemonTypes
+    
     ]
+    
   }
   interface PokemonAbilities {
     ability: {
      name: string;
+    }
+  }
+  interface PokemonTypes {
+    type: {
+      name: string,
     }
   }
 

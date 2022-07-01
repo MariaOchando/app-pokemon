@@ -40,5 +40,7 @@ export class PokemonsService {
           return res;
         })
       }
+
+   
   
 }
