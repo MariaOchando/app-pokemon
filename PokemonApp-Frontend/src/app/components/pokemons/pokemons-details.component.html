@@ -1,23 +1,22 @@
 <div class="container">
-<h1>Pokemon name: {{pokemon.name}}</h1>
-
-<div>
+  <h1>Pokemon name: {{ pokemon.name }}</h1>
+  <div>
     <ul>
-        <li>id: {{pokemon.id}}</li>
-        <li>Height: {{pokemon.height}}</li>
-        <li>Weight: {{pokemon.weight}}</li>
-        
-        <li>Pokemon abilities: 
-            <ul>
-                <li>{{pokemon.abilities[0].ability.name}} </li> 
-                <li>{{pokemon.abilities[1].ability.name}} </li>
-            </ul>
-        </li>
-        <li>Pokemon type: {{pokemon.types[0].type.name}}</li>
-        <div>
-            <img src="{{pokemon.sprites.front_default}}" alt="pokemon sprite">
-            <img src="{{pokemon.sprites.back_default}}" alt="pokemon sprites">
-        </div>
+      <li>id: {{ pokemon.id }}</li>
+      <li>Height: {{ pokemon.height }}</li>
+      <li>Weight: {{ pokemon.weight }}</li>
+      <li>
+        Pokemon abilities:
+        <ul>
+          <li>{{ pokemon.abilities[0].ability.name }}</li>
+          <li>{{ pokemon.abilities[1].ability.name }}</li>
+        </ul>
+      </li>
+      <li>Pokemon type: {{ pokemon.types[0].type.name }}</li>
+      <div>
+        <img src="{{ pokemon.sprites.front_default }}" alt="pokemon sprite" />
+        <img src="{{ pokemon.sprites.back_default }}" alt="pokemon sprites" />
+      </div>
     </ul>
-</div>
+  </div>
 </div>

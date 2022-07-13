@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
@@ -26,7 +26,6 @@ import { LatestPokemonsComponent } from './components/Landing-Page/landing-page.
     TypesDetailsComponent,
     SearchFilterComponent,
     LatestPokemonsComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -37,6 +36,6 @@ import { LatestPokemonsComponent } from './components/Landing-Page/landing-page.
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

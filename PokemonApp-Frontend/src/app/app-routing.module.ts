@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
 import { TypesComponent } from './components/types/types.component';
-import {  AbilitiesComponent } from './components/abilities/abilities.component';
+import { AbilitiesComponent } from './components/abilities/abilities.component';
 import { PokemonsDetailsComponent } from './components/pokemons/pokemons-details.component';
 import { AbilitiesDetailsComponent } from './components/abilities/abilities-details.component';
 import { TypesDetailsComponent } from './components/types/types-details.component';
@@ -11,18 +11,17 @@ import { LatestPokemonsComponent } from './components/Landing-Page/landing-page.
 
 const routes: Routes = [
   //{path: " ", component: HomeComponent},
-  {path: "pokemons", component: PokemonsComponent},
-  {path: "types", component: TypesComponent},
-  {path: "abilities", component:  AbilitiesComponent},
-  {path: "pokemon/:pokemon", component: PokemonsDetailsComponent},
-  {path: "ability/:ability", component:AbilitiesDetailsComponent},
-  {path: "type/:type", component: TypesDetailsComponent},
-  {path: "", component: LatestPokemonsComponent}
-  
+  { path: 'pokemons', component: PokemonsComponent },
+  { path: 'types', component: TypesComponent },
+  { path: 'abilities', component: AbilitiesComponent },
+  { path: 'pokemon/:pokemon', component: PokemonsDetailsComponent },
+  { path: 'ability/:ability', component: AbilitiesDetailsComponent },
+  { path: 'type/:type', component: TypesDetailsComponent },
+  { path: '', component: LatestPokemonsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

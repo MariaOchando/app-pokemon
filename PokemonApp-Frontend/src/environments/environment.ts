@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  abilitiesURL: "https://pokeapi.co/api/v2/ability",
-  pokemonsURL: "https://pokeapi.co/api/v2/pokemon",
-  typesURL: "https://pokeapi.co/api/v2/type",
+  abilitiesURL: 'https://pokeapi.co/api/v2/ability',
+  pokemonsURL: 'https://pokeapi.co/api/v2/pokemon',
+  typesURL: 'https://pokeapi.co/api/v2/type',
 };
 
 /*
